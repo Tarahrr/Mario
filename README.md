@@ -1,0 +1,2 @@
+Simple Mario Game
+  Read map file and then start to create each element in the window. This project is working with SFML.
