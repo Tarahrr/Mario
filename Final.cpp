@@ -9,7 +9,7 @@ char ** map;
 int width = 0, length =0;
 using namespace std;
 int d = 20 , k = 0  ,Coin  = 0 ;
-bool EndGame = false; 
+bool EndGame = false;
 bool OVER = false;
 ////////////////////////Scoot//////////////////////////////////////////////////
 class Scoot
@@ -32,7 +32,7 @@ public:
 		MoodScoot = new int [numScoot];
 		ClockScoot = new int [numScoot];
 		Coinfront = new bool [numScoot];
-		if(!ScootTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/kik.png"))
+		if(!ScootTexture.loadFromFile("/Pictures/kik.png"))
 			cout<<"cant load a Scoot\n";
 		ScootSprite.setTexture(ScootTexture);
 
@@ -46,7 +46,7 @@ public:
 		}
 	}
 	void Scoot::Move(char ** map , int length , int width)
-	{	
+	{
 		for(int i = 0 ; i < numScoot ; i ++)
 		{
 			if(ScootX[i] != -1 && ScootY[i]!= -1  && ClockScoot[i] >= 2) // if clock
@@ -67,7 +67,7 @@ public:
 							else
 							{
 								if(Coinfront[i] == true)
-								{ 
+								{
 									Coinfront[i] = false;
 									map[ScootX[i]][ScootY[i]+1]= 'G';
 									ScootY[i]++;
@@ -100,7 +100,7 @@ public:
 								map[ScootX[i]][ScootY[i]] = '.';
 								ScootX[i] = ScootY[i] = -1;
 								break;
-							}	
+							}
 							if(map[h][ScootY[i]+1] != '.')
 							{
 								map[h-1][ScootY[i]+1] = 'Y';
@@ -113,7 +113,7 @@ public:
 				}
 				else if(MoodScoot[i] == 2 )
 				{
-					if(( map[ScootX[i]][ScootY[i]-1] == '.' || map[ScootX[i]][ScootY[i]-1] == '?' ||  map[ScootX[i]][ScootY[i]-1] == 's' || map[ScootX[i]][ScootY[i]-1] =='K' || map[ScootX[i]][ScootY[i]-1] == 'k' || map[ScootX[i]][ScootY[i]-1] =='g' || map[ScootX[i]][ScootY[i]-1] =='G' )&& map[ScootX[i]+1][ScootY[i]-1] != '.' ) 
+					if(( map[ScootX[i]][ScootY[i]-1] == '.' || map[ScootX[i]][ScootY[i]-1] == '?' ||  map[ScootX[i]][ScootY[i]-1] == 's' || map[ScootX[i]][ScootY[i]-1] =='K' || map[ScootX[i]][ScootY[i]-1] == 'k' || map[ScootX[i]][ScootY[i]-1] =='g' || map[ScootX[i]][ScootY[i]-1] =='G' )&& map[ScootX[i]+1][ScootY[i]-1] != '.' )
 					{
 						if(map[ScootX[i]][ScootY[i]-1] != 's')
 						{
@@ -126,7 +126,7 @@ public:
 							else
 							{
 								if(Coinfront[i] == true)
-								{ 
+								{
 									Coinfront[i] = false;
 									map[ScootX[i]][ScootY[i]-1]= 'G';
 									ScootY[i]--;
@@ -143,10 +143,10 @@ public:
 						{
 							EndGame = true;
 							OVER =true;
-						}	
+						}
 					}
 					else if( map[ScootX[i]][ScootY[i]-1] == '#' || map[ScootX[i]][ScootY[i]-1] == 't'|| map[ScootX[i]][ScootY[i]-1] == 'c' || ScootY[i] == 0)
-					{			
+					{
 						MoodScoot[i] = 3;
 					}
 					else if(map[ScootX[i]][ScootY[i]-1]=='.' && map[ScootX[i]+1][ScootY[i]-1]=='.')
@@ -159,7 +159,7 @@ public:
 								map[ScootX[i]][ScootY[i]] = '.';
 								ScootX[i] = ScootY[i] = -1;
 								break;
-							}	
+							}
 							if(map[h][ScootY[i]-1] != '.')
 							{
 								map[h-1][ScootY[i]-1] = 'y';
@@ -173,7 +173,7 @@ public:
 			}
 		}
 	}
-};	
+};
 ////////////////////////Class For Coin & End //////////////////////////////////
 class Others
 {
@@ -187,7 +187,7 @@ public:
 	string FileName;
 	// Constructor
 	Others::Others(int width)
-	{	
+	{
 		// font
 		if (!font.loadFromFile("GOUDYSTO.ttf"))
 			std::cout<<"CANT LOAD FONT \n";
@@ -214,25 +214,25 @@ public:
 
 		CoinText.setColor(sf::Color::Yellow);
 		TimeText.setColor(sf::Color::White);
-		
+
 		End.x = End.y = -1;
 		LoopCoin = 0;
 		FileName = "";
-		
+
 		//sprite and texture
-		if(!EndTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/END.png"))
+		if(!EndTexture.loadFromFile("/Pictures/END.png"))
 			cout<<"cant load a End\n";
 		Endsprite.setTexture(EndTexture);
 
-		if(!kikboxTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/KikBOX.png"))
+		if(!kikboxTexture.loadFromFile("/Pictures/KikBOX.png"))
 			cout<<"cant load a End\n";
 		kikBoxSprite.setTexture(kikboxTexture);
 
-		if(!BoxTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/Box.png"))
+		if(!BoxTexture.loadFromFile("/Pictures/Box.png"))
 			cout<<"cant load Box \n";
 		BoxSprite.setTexture(BoxTexture);
 
-		if(!CoinTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/Coin.png"))
+		if(!CoinTexture.loadFromFile("/Pictures/Coin.png"))
 				cout<<"cant load a Coin \n";
 		CoinSprite.setTexture(CoinTexture);
 	}
@@ -240,7 +240,7 @@ public:
 	// Animation o f coin
 	void Coinanimation (int num)
 	{
-		FileName= "C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/CionAnimation.png";
+		FileName= "/Pictures/CionAnimation.png";
 
 		int ans = num % 4;
 		if(ans == 0)
@@ -293,8 +293,8 @@ public:
 	//Constructor
 	Goomba::Goomba(int length,int width,char ** map)
 	{
-		FileName = "C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/Goomba.png";	
-		if(!gtexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/goomba 1.png"))
+		FileName = "/Pictures/Goomba.png";
+		if(!gtexture.loadFromFile("/Pictures/goomba 1.png"))
 			cout<<"cant load a Goomba \n";
 		gsprite.setTexture(gtexture);
 
@@ -366,7 +366,7 @@ public:
 	// move Goomaba
 	void MoveGoomba(char ** map , int length , int width)
 	{
-		
+
 		for(int i = 0 ; i < numGoomba ; i ++)
 		{
 			if(GoombaX[i] != -1 && GoombaY[i]!= -1  && GoombaClock[i] >= 25) // if clock
@@ -388,7 +388,7 @@ public:
 							else
 							{
 								if(Coinfront[i] == true)
-								{ 
+								{
 									Coinfront[i] = false;
 									map[GoombaX[i]][GoombaY[i]+1]= 'G';
 									GoombaY[i]++;
@@ -421,7 +421,7 @@ public:
 								map[GoombaX[i]][GoombaY[i]] = '.';
 								GoombaX[i] = GoombaY[i] = -1;
 								break;
-							}	
+							}
 							if(map[h][GoombaY[i]+1] != '.')
 							{
 								map[h-1][GoombaY[i]+1] = 'g';
@@ -434,7 +434,7 @@ public:
 				}
 				else if(Mood[i] == 0 ) // g left
 				{
-					if(( map[GoombaX[i]][GoombaY[i]-1] == '.' || map[GoombaX[i]][GoombaY[i]-1] == '?' ||  map[GoombaX[i]][GoombaY[i]-1] == 's' || map[GoombaX[i]][GoombaY[i]-1] =='K' || map[GoombaX[i]][GoombaY[i]-1] == 'k' || map[GoombaX[i]][GoombaY[i]-1] =='g' || map[GoombaX[i]][GoombaY[i]-1] =='G' )&& map[GoombaX[i]+1][GoombaY[i]-1] != '.' ) 
+					if(( map[GoombaX[i]][GoombaY[i]-1] == '.' || map[GoombaX[i]][GoombaY[i]-1] == '?' ||  map[GoombaX[i]][GoombaY[i]-1] == 's' || map[GoombaX[i]][GoombaY[i]-1] =='K' || map[GoombaX[i]][GoombaY[i]-1] == 'k' || map[GoombaX[i]][GoombaY[i]-1] =='g' || map[GoombaX[i]][GoombaY[i]-1] =='G' )&& map[GoombaX[i]+1][GoombaY[i]-1] != '.' )
 					{
 						if(map[GoombaX[i]][GoombaY[i]-1] != 's')
 						{
@@ -447,7 +447,7 @@ public:
 							else
 							{
 								if(Coinfront[i] == true)
-								{ 
+								{
 									Coinfront[i] = false;
 									map[GoombaX[i]][GoombaY[i]-1]= 'g';
 									GoombaY[i]--;
@@ -467,7 +467,7 @@ public:
 						}
 					}
 					else if( map[GoombaX[i]][GoombaY[i]-1] == '#' || map[GoombaX[i]][GoombaY[i]-1] == 't'|| map[GoombaX[i]][GoombaY[i]-1] == 'c' || GoombaY[i] == 0)
-					{			
+					{
 						Mood[i] = 1;
 					}
 					else if(map[GoombaX[i]][GoombaY[i]-1]=='.' && map[GoombaX[i]+1][GoombaY[i]-1]=='.')
@@ -480,7 +480,7 @@ public:
 								map[GoombaX[i]][GoombaY[i]] = '.';
 								GoombaX[i] = GoombaY[i] = -1;
 								break;
-							}	
+							}
 							if(map[h][GoombaY[i]-1] != '.')
 							{
 								map[h-1][GoombaY[i]-1] = 'g';
@@ -518,15 +518,15 @@ public:
 	Koopa::Koopa(int length,int width,char ** map)
 	{
 		FileName = "";
-	if(!kikTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/kik.png"))
+	if(!kikTexture.loadFromFile("/Pictures/kik.png"))
 				cout<<"cant load  koopa kik\n";
 		KikSprite.setTexture(kikTexture);
-	
-		if(!koopaRighttexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/RightKoopa.png"))
+
+		if(!koopaRighttexture.loadFromFile("/Pictures/RightKoopa.png"))
 				cout<<"cant load koopa animation \n";
 		koopaRightsprite.setTexture(koopaRighttexture);
 
-		if(!koopaLefttexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/LeftKoopa.png"))
+		if(!koopaLefttexture.loadFromFile("/Pictures/LeftKoopa.png"))
 			cout<<"cant load koopa animation \n";
 		koopaLeftsprite.setTexture(koopaLefttexture);
 		numKoopa =0;
@@ -544,7 +544,7 @@ public:
 		KoopaKik = new int[numKoopa];
 		loopKoopa = new int[numKoopa];
 		Coinfront = new bool[numKoopa];
-		// full arrays 
+		// full arrays
 		for(int i = 0 ;i<numKoopa;i++)
 		{
 			KoopaX[i] = -1;
@@ -578,7 +578,7 @@ public:
 	// Animation of Koopa
 	void AnimationKoopaRight(int num)
 	{
-		if(!koopaRighttexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/Rkoopa.png"))
+		if(!koopaRighttexture.loadFromFile("/Pictures/Rkoopa.png"))
 			cout<<"cant Load Animation of Koopa Right\n";
 		int ans = num % 2;
 		if(ans == 0)
@@ -597,7 +597,7 @@ public:
 	void AnimationKoopaLeft(int num)
 	{
 		int ans = num % 2;
-			if(!koopaLefttexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/Lkoopa.png"))
+			if(!koopaLefttexture.loadFromFile("/Pictures/Lkoopa.png"))
 				cout<<"cant load a koopa animation \n";
 
 		if(ans == 0)
@@ -605,7 +605,7 @@ public:
 			koopaLeftsprite.setTextureRect(sf::IntRect(ans*32,0,32,32));
 		}
 		else if(ans == 1)
-		{			
+		{
 			koopaLeftsprite.setTextureRect(sf::IntRect(ans*32,0,32,32));
 		}
 		else
@@ -662,7 +662,7 @@ public:
 					}
 					else if(map[KoopaX[i]][KoopaY[i]+1]=='.' && map[KoopaX[i]+1][KoopaY[i]+1]=='.')
 					{
-						Mood[i] = 0;		
+						Mood[i] = 0;
 					}
 					AnimationKoopaRight(loopKoopa[i]);
 				}
@@ -701,7 +701,7 @@ public:
 						}
 					}
 					else if( map[KoopaX[i]][KoopaY[i]-1] == '#' || map[KoopaX[i]][KoopaY[i]-1] == 'c'|| map[KoopaX[i]][KoopaY[i]-1] == 't' || KoopaY[i] == 0)
-					{			
+					{
 						Mood[i] = 1;
 					}
 					else if(map[KoopaX[i]][KoopaY[i]-1]=='.' && map[KoopaX[i]+1][KoopaY[i]-1]=='.')
@@ -719,7 +719,7 @@ class Mario
 {
 public:
 	int LoopMario;
-	bool JumpTrue ,isright; 
+	bool JumpTrue ,isright;
 	string FileName;
 	sf::Clock speed,ClockJump;
 	sf::Vector2i mariopos;
@@ -732,17 +732,17 @@ public:
 	{
 		wid = width;
 		len = length;
-		FileName ="C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/animation.png";
+		FileName ="/Pictures/animation.png";
 		isright =true;
 		LoopMario = 0;
 		JumpTrue= false;
 		// Texture  and Sprite
-		if(!PlayerTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/mario1.png"))
+		if(!PlayerTexture.loadFromFile("/Pictures/mario1.png"))
 			cout<<"cant load a player \n";
 		PlayerSprite.setTexture(PlayerTexture);
 		// marioX and marioY
 		for (int i = 0 ; i < width; i++)
-		{	
+		{
 			for (int j = 0; j < length; j++)
 				if(map[i][j] == 's')
 				{
@@ -755,9 +755,9 @@ public:
 	void AnimationOfMario(int num)
 	{
 		if( isright == true)
-			FileName = "C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/ranimation.png";
+			FileName = "/Pictures/ranimation.png";
 		else
-			FileName = "C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/lanimation.png";
+			FileName = "/Pictures/lanimation.png";
 		int ans = num % 4;
 		if(ans == 0)
 		{
@@ -777,7 +777,7 @@ public:
 				cout<<"cant load a player animation \n";
 			PlayerSprite.setTextureRect(sf::IntRect(ans*33,0,32,32));
 		}
-		
+
 		else if(ans == 3)
 		{
 			if(!PlayerTexture.loadFromFile(FileName))
@@ -799,7 +799,7 @@ public:
 				speed.restart();
 				int count =1;
 					while( count <= 4 )
-					{	
+					{
 						if( mariopos.x -1>=0 )
 						{
 							if(map[mariopos.x-1][mariopos.y] == '.' || map[mariopos.x-1][mariopos.y] == '?')
@@ -845,7 +845,7 @@ public:
 				map[mariopos.x][(mariopos.y+1 == length-1)? mariopos.y : ++ mariopos.y ] = 's';
 
 				if(mariopos.y < k+9 )
-				{	
+				{
 					d--;
 					k--;
 				}
@@ -878,14 +878,14 @@ public:
 				map[mariopos.x][mariopos.y] = '.';
 				map[mariopos.x][(mariopos.y-1 < 0)? 0 : --mariopos.y ] = 's';
 				if(mariopos.y > d-6 )
-				{	
+				{
 					d++;
 					k++;
 				}
 				d--;
 				k--;
 				if(k<0)
-				{	
+				{
 					k=0;
 					d = 20;
 				}
@@ -929,8 +929,8 @@ public:
 								goomba.GoombaX[l] = -1;
 								goomba.GoombaY[l] = -1;
 								goomba.Mood[l] = -1;
-								map[keepup -1][mariopos.y] = '.';		
-							}	
+								map[keepup -1][mariopos.y] = '.';
+							}
 						}
 					}
 				if(( map[keepup -1][mariopos.y] =='k' || map[keepup -1][mariopos.y] =='K'))
@@ -984,11 +984,11 @@ public:
 					map[keepup-1][mariopos.y] = 's';
 					mariopos.x = keepup-1;
 				}
-				}	
+				}
 		}
 	}
 		else if(ClockJump.getElapsedTime().asSeconds() > 0.5)
-		{		
+		{
 			JumpTrue =false;
 			map[mariopos.x][mariopos.y] = '.';
 			for(int h=mariopos.x ; h < width ;h++)
@@ -1016,7 +1016,7 @@ public:
 							goomba.GoombaX[l] = -1;
 							goomba.GoombaY[l] = -1;
 							goomba.Mood[l] = -1;
-							map[keepup -1][mariopos.y] = '.';					
+							map[keepup -1][mariopos.y] = '.';
 						}
 					}
 				}
@@ -1065,7 +1065,7 @@ public:
 						mariopos.x = keepup-1;
 						mariopos.y ++;
 					}
-					else 
+					else
 					{
 						if (map[keepup-1][mariopos.y + 1] == '.')
 						{
@@ -1138,9 +1138,8 @@ int main()
 
 		///////////////////////////////////////////////////////////PLAYER NAME /////////////////////////////////////////////////////////////////
 	sf::RenderWindow PLAYER(sf::VideoMode(700,400), "PLAYER NAME");
-	
+
 	BrandSprite.setPosition( 700 - 100  , 400 - 25);
-//		BrandSprite.setPosition(0,0);
 	sf::Text Playern;
 	sf::Text top ,down;
 	top.setFont(Other.font);
@@ -1194,13 +1193,13 @@ int main()
 		PLAYER.display();
 	}
 	////////////////////////////////////////////WINDOW///////////////////////////////////////////////////////////////
-	// Load a texture 
+	// Load a texture
 	sf::Texture btexture  ,EndTexture   , WinTexture;
-	if(!btexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/ground.png"))
+	if(!btexture.loadFromFile("/Pictures/ground.png"))
 		std::cout<<"cant load a ground\n";
-	if(!EndTexture.loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/Gameover.png"))
+	if(!EndTexture.loadFromFile("/Pictures/Gameover.png"))
 		cout<<"cant load a End  \n";
-	if(!WinTexture .loadFromFile("C:/Users/User/Documents/Visual Studio 2010/Projects/Mario Game/Mario Game/Pictures/Win.png"))
+	if(!WinTexture .loadFromFile("/Pictures/Win.png"))
 				cout<<"cant load a Win \n";
 	// Sprites
 	sf::Sprite bsprite(btexture)  , EndSprite(EndTexture),  WinSprite(WinTexture) ;
@@ -1210,14 +1209,14 @@ int main()
 	bsprite.scale(2,2);
 
 	sf::Vector2i screendimension(640 , 32*width);
-	
+
 	// Main Window
 		sf::RenderWindow window(sf::VideoMode( screendimension.x,screendimension.y), "MARIO GAME!!!");
 		BrandSprite.setPosition(  screendimension.x - 100 ,  screendimension.y -25);
 	// window is open
 		//clock
 	sf::Clock clock;
-	
+
     while (window.isOpen())
 	{
         sf::Event event;
@@ -1226,7 +1225,7 @@ int main()
                 window.close();
 			if(event.type==sf::Event::KeyPressed && event.key.code==sf::Keyboard::Q)
 				window.close();
-		}	
+		}
 	if(EndGame == false)
 	{
 		// Koopa Clock
@@ -1343,7 +1342,7 @@ int main()
 		}
 		mario.fall(mario.JumpTrue, width, map,g , kopa ,scoot);
 		mario.PlayerSprite.setPosition(32*(mario.mariopos.y - k ) -d , 32*mario.mariopos.x);
-	
+
 		// draw Goomba
 		for(int h = 0 ; h <g.numGoomba ; h++)
 		{
@@ -1414,9 +1413,9 @@ int main()
 		EndSprite.setTexture(EndTexture);
 		EndSprite.setPosition(0,0);
 		window.draw(EndSprite);
-		
+
 		EndGame = true;
-					
+
 	}
 	if(Win == true)
 	{
